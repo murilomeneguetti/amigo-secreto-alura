@@ -32,17 +32,19 @@ function sortear() {
         window.alert('Informe pelo menos 2 nomes.');
     } else {
         console.log('sorteio');
-        let validacao = 1;
-        /*for (let i = 0; i <= listaAmigos.length; i++) {
-            while (validacao == 1){
+        console.log('numero de amigos: ' + listaAmigos.length);
+        console.log('sorteioDarPresente.length: ' + sorteioDarPresente.length);
+        console.log('sorteioDarPresente.includes(sorteioDarPresente[i]): ' + sorteioDarPresente.includes(sorteioDarPresente[0]));
+        console.log('primeiro amigo: ' + listaAmigos[0]);
+        //let validacao = 1;
+        //sorteio não está funcionando ainda, precisa continuar
+        for (let i = 0; i <= listaAmigos.length; i++) {
+            while (sorteioDarPresente.length < listaAmigos.length && sorteioDarPresente.includes(sorteioDarPresente[i])){
                 sorteioDarPresente[i] = parseInt(Math.random() * listaAmigos.length);
-
+                console.log(`número ${i}: ${sorteioDarPresente[i]}`);
             }
-            let numeroSorteio = parseInt(Math.random() * listaAmigos.length);
-            console.log(numeroSorteio);
 
-
-        }*/
+        }
     }
 }
 
