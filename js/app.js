@@ -1,10 +1,12 @@
 let listaAmigos = [];
 let sorteioDarPresente = [];
 let sorteioRecebePresente = [];
+let amigosIncluidos = document.getElementById('lista-amigos');
+let listaSorteio = document.querySelector('#lista-sorteio');
 
 function adicionar() {
     let nome = document.getElementById('nome-amigo');
-    console.log(nome.value);
+    //console.log(nome.value);
 
     if (nome.value.length == 0) {
         window.alert('Informe um nome.')
@@ -12,9 +14,9 @@ function adicionar() {
         window.alert('Nome já adicionado. Insira outro nome.');
     } else {
         listaAmigos.push(nome.value)
-        console.log(listaAmigos);
+        //console.log(listaAmigos);
 
-        let amigosIncluidos = document.getElementById('lista-amigos');
+        //let amigosIncluidos = document.getElementById('lista-amigos');
         
         if (amigosIncluidos.textContent == '') {
             amigosIncluidos.textContent = nome.value;
@@ -52,8 +54,13 @@ function gerarNumeroAleatorioReceber(index) {
 }
 
 function sortear() {
-    if (listaAmigos.length <= 1) {
-        window.alert('Informe pelo menos 2 nomes.');
+    //let listaSorteio = document.querySelector('#lista-sorteio');
+    listaSorteio.innerHTML = '';
+    sorteioDarPresente = [];
+    sorteioRecebePresente = [];
+    
+    if (listaAmigos.length <= 2) {
+        window.alert('Informe pelo menos 3 nomes.');
     } else {
         console.log('sorteio');
         /*console.log('numero de amigos: ' + listaAmigos.length);
@@ -67,10 +74,15 @@ function sortear() {
             gerarNumeroAleatorioReceber(i);
             console.log(`sorteioRecebePresente[${i}]: ` + sorteioRecebePresente[i] + ' ' + listaAmigos[sorteioRecebePresente[i]]);
 
+            listaSorteio.innerHTML += `${listaAmigos[sorteioDarPresente[i]]} -> ${listaAmigos[sorteioRecebePresente[i]]} <br>`;
         }
     }
 }
 
 function reiniciar() {
-
+    listaAmigos = [];
+    sorteioDarPresente = [];
+    sorteioRecebePresente = [];
+    amigosIncluidos.textContent = '';
+    listaSorteio.innerHTML = '';
 }
