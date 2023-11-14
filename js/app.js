@@ -15,23 +15,17 @@ function adicionar() {
     } else {
         listaAmigos.push(nome.value)
         //console.log(listaAmigos);
-
-        //let amigosIncluidos = document.getElementById('lista-amigos');
-        
         if (amigosIncluidos.textContent == '') {
             amigosIncluidos.textContent = nome.value;
         } else {
             amigosIncluidos.textContent += `, ${nome.value}`;
         }
-        
         nome.value = '';
     }
-    
 }
 
 function gerarNumeroAleatorioDar() {
     let numeroSorteado = parseInt(Math.random() * listaAmigos.length);
-
     //verificando se o número ja está na lista ou não
     if (sorteioDarPresente.includes(numeroSorteado)) {
         gerarNumeroAleatorioDar();
@@ -43,9 +37,8 @@ function gerarNumeroAleatorioDar() {
 
 function gerarNumeroAleatorioReceber(index) {
     let numeroSorteado = parseInt(Math.random() * listaAmigos.length);
-
     //verificando se o número ja está na lista ou não
-    if (sorteioRecebePresente.includes(numeroSorteado) /*|| sorteioDarPresente[index] == numeroSorteado*/) {
+    if (sorteioRecebePresente.includes(numeroSorteado)) {
         gerarNumeroAleatorioReceber(index);
     } else if (numeroSorteado == sorteioDarPresente[sorteioRecebePresente.indexOf(sorteioDarPresente[index])]) {
         gerarNumeroAleatorioReceber(index);
@@ -53,8 +46,8 @@ function gerarNumeroAleatorioReceber(index) {
         gerarNumeroAleatorioReceber(index);
     } else {
         sorteioRecebePresente.push(numeroSorteado);
-        console.log('indice: ' + index);
-        console.log('teste: ' + numeroSorteado + ' - ' + sorteioDarPresente[sorteioRecebePresente.indexOf(sorteioDarPresente[index])]);
+        //console.log('indice: ' + index);
+        //console.log('teste: ' + numeroSorteado + ' - ' + sorteioDarPresente[sorteioRecebePresente.indexOf(sorteioDarPresente[index])]);
         //console.log(sorteioRecebePresente);
     }
 }
@@ -79,7 +72,6 @@ function sortear() {
             //console.log(`sorteioDarPresente[${i}]: ` + sorteioDarPresente[i] + ' - ' + listaAmigos[sorteioDarPresente[i]]);
             gerarNumeroAleatorioReceber(i);
             //console.log(`sorteioRecebePresente[${i}]: ` + sorteioRecebePresente[i] + ' - ' + listaAmigos[sorteioRecebePresente[i]]);
-
             listaSorteio.innerHTML += `${listaAmigos[sorteioDarPresente[i]]} -> ${listaAmigos[sorteioRecebePresente[i]]} <br>`;
         }
     }
