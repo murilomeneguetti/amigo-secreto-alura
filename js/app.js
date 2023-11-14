@@ -57,7 +57,7 @@ function sortear() {
     listaSorteio.innerHTML = '';
     sorteioDarPresente = [];
     sorteioRecebePresente = [];
-    console.clear();
+    //console.clear();
     if (listaAmigos.length <= 2) {
         window.alert('Informe pelo menos 3 nomes.');
     } else {
