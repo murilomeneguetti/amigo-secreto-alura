@@ -37,7 +37,7 @@ function gerarNumeroAleatorioDar() {
         gerarNumeroAleatorioDar();
     } else {
         sorteioDarPresente.push(numeroSorteado);
-        console.log(sorteioDarPresente);
+        //console.log(sorteioDarPresente);
     }
 }
 
@@ -45,11 +45,17 @@ function gerarNumeroAleatorioReceber(index) {
     let numeroSorteado = parseInt(Math.random() * listaAmigos.length);
 
     //verificando se o número ja está na lista ou não
-    if (sorteioRecebePresente.includes(numeroSorteado) || sorteioDarPresente[index] == numeroSorteado) {
-        gerarNumeroAleatorioReceber();
+    if (sorteioRecebePresente.includes(numeroSorteado) /*|| sorteioDarPresente[index] == numeroSorteado*/) {
+        gerarNumeroAleatorioReceber(index);
+    } else if (numeroSorteado == sorteioDarPresente[sorteioRecebePresente.indexOf(sorteioDarPresente[index])]) {
+        gerarNumeroAleatorioReceber(index);
+    } else if (numeroSorteado == sorteioDarPresente[index]) {
+        gerarNumeroAleatorioReceber(index);
     } else {
         sorteioRecebePresente.push(numeroSorteado);
-        console.log(sorteioRecebePresente);
+        console.log('indice: ' + index);
+        console.log('teste: ' + numeroSorteado + ' - ' + sorteioDarPresente[sorteioRecebePresente.indexOf(sorteioDarPresente[index])]);
+        //console.log(sorteioRecebePresente);
     }
 }
 
@@ -58,11 +64,11 @@ function sortear() {
     listaSorteio.innerHTML = '';
     sorteioDarPresente = [];
     sorteioRecebePresente = [];
-    
+    console.clear();
     if (listaAmigos.length <= 2) {
         window.alert('Informe pelo menos 3 nomes.');
     } else {
-        console.log('sorteio');
+        //console.log('sorteio');
         /*console.log('numero de amigos: ' + listaAmigos.length);
         console.log('sorteioDarPresente.length: ' + sorteioDarPresente.length);
         console.log('sorteioDarPresente.includes(sorteioDarPresente[i]): ' + sorteioDarPresente.includes(sorteioDarPresente[0]));
@@ -70,9 +76,9 @@ function sortear() {
         //sorteio não está funcionando ainda, precisa continuar
         for (let i = 0; i < listaAmigos.length; i++) {
             gerarNumeroAleatorioDar();
-            console.log(`sorteioDarPresente[${i}]: ` + sorteioDarPresente[i] + ' ' + listaAmigos[sorteioDarPresente[i]]);
+            //console.log(`sorteioDarPresente[${i}]: ` + sorteioDarPresente[i] + ' - ' + listaAmigos[sorteioDarPresente[i]]);
             gerarNumeroAleatorioReceber(i);
-            console.log(`sorteioRecebePresente[${i}]: ` + sorteioRecebePresente[i] + ' ' + listaAmigos[sorteioRecebePresente[i]]);
+            //console.log(`sorteioRecebePresente[${i}]: ` + sorteioRecebePresente[i] + ' - ' + listaAmigos[sorteioRecebePresente[i]]);
 
             listaSorteio.innerHTML += `${listaAmigos[sorteioDarPresente[i]]} -> ${listaAmigos[sorteioRecebePresente[i]]} <br>`;
         }
